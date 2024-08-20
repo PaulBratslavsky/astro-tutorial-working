@@ -1,0 +1,31 @@
+---
+const date = new Date().getFullYear();
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body class="container mx-auto w-3/4">
+		<h1>Astro</h1>
+		<p>Copyright {date}</p>
+		<button id="btn" class="btn">Click me</button>
+	</body>
+</html>
+
+<style>
+	.btn {
+		@apply bg-violet-500 text-white font-bold py-2 px-4 rounded;
+	}
+</style>
+
+<script>
+	const btn = document.getElementById('btn');
+	btn?.addEventListener('click', () => {
+		alert('clicked');
+	});
+</script>
