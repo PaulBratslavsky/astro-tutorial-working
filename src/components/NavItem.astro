@@ -5,11 +5,16 @@ interface Props {
   mobile?: boolean;
 }
 
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
 const { href, label, mobile } = Astro.props;
+
+const isActive = currentPath === href.slice(1);
+const isMobile = mobile ? "mobile-nav-item" : "nav-item";
 ---
 
 <li>
-  <a class={mobile ? "mobile-nav-item" : "nav-item"} href={href}>{label}</a>
+  <a class:list={[isMobile, isActive ? "active" : ""]}  href={href}>{label}</a>
 </li>
 
 <style>
@@ -19,5 +24,9 @@ const { href, label, mobile } = Astro.props;
 
   .nav-item {
     @apply text-sm text-gray-400 hover:text-gray-500;
+  }
+
+  .active {
+    @apply text-gray-900;
   }
 </style>
